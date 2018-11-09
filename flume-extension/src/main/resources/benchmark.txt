@@ -1,0 +1,36 @@
+hadoop fs -text file:///data/harrywu/sjc_kafka/sj1_logstash_meeting_hdfs_2018-07-06/FlumeData-rpsj1hsn014.webex.com.1530835200001.lzo_deflate | kafka-console-producer --broker-list rphf1kaf001.qa.webex.com:9092,rphf1kaf002.qa.webex.com:9092,rphf1kaf003.qa.webex.com:9092 --topic logstash_meeting_hdfs_test
+
+hadoop fs -text file:///data/harrywu/sjc_kafka/sj1_logstash_meeting_hdfs_2018-07-06/FlumeData-rpsj1hsn014.webex.com.1530835200260.lzo_deflate | kafka-console-producer --broker-list rphf1kaf001.qa.webex.com:9092,rphf1kaf002.qa.webex.com:9092,rphf1kaf003.qa.webex.com:9092 --topic logstash_meeting_hdfs_test
+
+
+
+hadoop fs -ls /kafka/logstash_meeting_hdfs_test/*/*/2018-07-11 | awk '{print $6"-"$7}' | sort -r | head -n 10
+    2018-07-11-07:01
+
+hadoop fs -ls /kafka/logstash_meeting_hdfs_test_raw/2018-07-11 | awk '{print $6"-"$7}' | sort -r | head -n 10
+    2018-07-11-06:59
+
+1G
+    ===>===>===>
+    hadoop fs -ls /kafka/logstash_meeting_hdfs_test/*/*/2018-07-11 | awk '{print $6"-"$7}' | sort -r | head -n 10
+    2018-07-11-07:43
+
+    hadoop fs -du -s  /kafka/logstash_meeting_hdfs_test/*/*/2018-07-11/*.lzo_*  | awk '{print $1}' | awk '{SUM += $1} END {print SUM}'
+    83085377
+
+    hadoop fs -text /kafka/logstash_meeting_hdfs_test/*/*/2018-07-11/*.lzo_* |wc -l
+    2368381
+
+    ===>===>===>
+    hadoop fs -ls /kafka/logstash_meeting_hdfs_test_raw/2018-07-11 | awk '{print $6"-"$7}' | sort -r | head -n 10
+    2018-07-11-07:28
+
+    hadoop fs -du -s  /kafka/logstash_meeting_hdfs_test_raw/2018-07-11/*.lzo_*  | awk '{print $1}' | awk '{SUM += $1} END {print SUM}'
+    77709723
+
+    hadoop fs -text /kafka/logstash_meeting_hdfs_test_raw/2018-07-11/*.lzo_* |wc -l
+    1756633
+
+2G
+
+3G

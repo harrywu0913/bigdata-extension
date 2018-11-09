@@ -1,0 +1,6 @@
+<configuration>
+    <property>
+        <name>sqoop.tool.plugins</name>
+        <value>com.webex.dap.tool.DapToolPlugin</value>
+    </property>
+</configuration>
